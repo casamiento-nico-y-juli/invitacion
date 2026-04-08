@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+<!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+
+<body class="locked">
+
+<!-- HERO -->
+    <section class="hero">
+    <p class="small">Nos casamos</p>
+    <p class="date">08.05.26</p>
+    <img src="boda.jpg" alt="Nuestra boda" class="hero-img">
+    <h1 class="names">Nicolás & Julieta</h1>
+    <button id="btnOpen" class="btn">
+        Abrir invitación
+    </button>
+    </section>
+<!-- CONTENIDO -->
+    <div id="contenido">
+    <!-- BIENVENIDA -->
+    <div id="welcome-card" class="welcome-card">
+        <h2>¡Hola!</h2>
+        <p>Te invitamos a nuestra boda.<br>
+        A continuación te mostraremos toda <br> la información sobre esta fecha tan <br>importante para nosotros.</p>
+    </div>
+    <!-- CONTADOR -->
+    <section id="contador">
+    <h2>Cuenta regresiva</h2>
+    <div class="contador">
+        <div><span id="dias">0</span><p>días</p></div>
+        <div><span id="horas">0</span><p>horas</p></div>
+        <div><span id="minutos">0</span><p>min</p></div>
+    </div>
+    </section>
+    <!-- CRONOGRAMA 1 -->
+    <section id="cronograma" class="fade">
+        <h2>Cronograma de boda</h2>
+        <div class="evento">
+            <h3>Registro Civil</h3>
+            <p class="hora">09:30 hs</p>
+            <p class="direccion">Dr. Equiza y Cnel. Melian, González Catán</p>
+            <a href="https://maps.google.com/?q=Dr+Equiza+y+Cnel+Melian+Gonzalez+Catan" 
+            target="_blank" 
+            class="btn-ubicacion">
+            Ver cómo llegar
+            </a>
+        </div>
+    <!-- CRONOGRAMA 2 -->
+        <div class="evento">
+            <h3>Brunch de celebración</h3>
+            <p class="hora">12:00 a 17:00 hs</p>
+            <p class="direccion">701 Isla Carceco, Carlos Spegazzini</p>
+            <a href="https://maps.google.com/?q=701+Isla+Carceco+Carlos+Spegazzini" 
+            target="_blank" 
+            class="btn-ubicacion">
+            Ver cómo llegar
+            </a>
+        </div>
+    </section>
+    <!-- VESTIMENTA -->
+    <section class="fade">
+        <h2>Código de vestimenta</h2>
+        <div class="colors">
+            <div style="background:#b9da82"></div>
+            <div style="background:#d2b48c"></div>
+            <div style="background:#8fb056"></div>
+            <div style="background:#917058"></div>
+            <div style="background:#366c19"></div>
+            <div style="background:#4f3726"></div>
+            <div style="background:#000"></div>
+            <div style="background:#8b4513"></div>
+        </div>
+    </section>
+    <!-- REGALO -->
+    <section class="fade">
+        <h2>Nuestro regalo</h2>
+        <p>
+        Tu presencia es nuestro mejor regalo,<br>
+        pero si está dentro de tus posibilidades <br>
+        y deseas hacernos un presente <br>
+        te dejamos esta opción:<br>
+        lluvia de sobres
+        </p>
+    </section>
+    <!-- Confirmación -->
+    <section class="fade">
+        <div class="confirmar-container">
+    <h2>Confirma tu asistencia</h2>
+    <p class="form-texto">Ingresa el nombre de quienes asistiran</p>
+    <div id="inputs-container">
+        <div class="input-group">
+            <input type="text" placeholder="Nombre del invitado">
+            <button class="eliminar">×</button>
+        </div>
+    </div>
+        <button id="agregarPersona" class="btn-secundario">+ Agregar otra persona</button>
+        <button id="btnConfirmar">Enviar</button>
+    </div>
+    </section>
+    </div>
+    <!-- Pantalla final -->
+    <div id="pantalla-final">
+        <h2>¡Gracias por confirmar tu asistencia!</h2>
+        <p>Nos alegra que seas parte de este dia</p>
+        <button id="volverInicio" class="btn">Volver al inicio</button>
+    </div>
+    <!-- MUSICA -->
+    <button id="music-toggle">
+        <span class="pause-symbol">=</span>
+        <span class="play-triangle">▶</span>
+    </button>
+    <audio id="bg-music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>

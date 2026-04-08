@@ -1,0 +1,621 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+body {
+    background: linear-gradient(#f5f1ea, #ede7dd);
+    font-family: 'Playfair Display', serif;
+    color: #2e2e2e;
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* HERO */
+.hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    background: linear-gradient(rgba(245,241,234,0.8), rgba(245,241,234,0.8));
+    transition: opacity 1s ease;
+    z-index: 10; 
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.hero-img {
+    max-width: 100vh; 
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.hero.hide {
+    opacity: 0;
+    transform: translateY(-50px);
+    pointer-events: none; 
+}
+.small {
+    font-family: 'Great vibes', cursive;
+    font-size: 4rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #3f5c3a;
+}
+
+.date {
+    font-size: 30px;
+    opacity: 0.9;
+    margin-top: -30px;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: 1px solid #3f5c3a;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.btn:hover {
+    background: #3f5c3a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* CONTENIDO */
+#contenido {
+    opacity: 0;
+    transform: scale(0.98);
+    visibility: hidden;
+    transition: opacity 1s ease, transform 1s ease;
+    padding: 20px;
+}
+
+#contenido, .fade {
+    transition: all 0.5s ease;
+}
+
+#contenido.visible {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+}
+
+/* Welcome card y contador ocupan espacio aunque no se vean */
+#welcome-card, #contador {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#contenido.visible #welcome-card,
+#contenido.visible #contador {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Bienvenida */
+.welcome-card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    padding: 60px 20px;
+    border-radius: 20px;
+    margin: 20px 15px;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* CONTADOR */
+#contador {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 1s ease, transform 1s ease;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-margin-top: 40px;
+}
+
+#contenido.visible #contador {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#contador h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #3f5c3a;
+    margin-bottom: 15px;
+}
+
+/* Aparece junto con contenido */
+#contenido.visible .welcome-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.welcome-card h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #3f5c3a;
+    margin-bottom: 15px;
+}
+
+.welcome-card p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #2e2e2e;
+}
+
+/* SECCIONES (cards premium) */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* TITULOS */
+h2 {
+    margin-bottom: 10px;
+    position: relative;
+    font-weight: normal;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #3f5c3a;
+}
+
+h2::after {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background: #3f5c3a;
+    display: block;
+    margin: 10px auto;
+}
+
+/* CONTADOR */
+.contador {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px; 
+    flex-wrap: wrap; /* permite que se adapten en móviles */
+}
+
+.contador div {
+    background: rgba(255,255,255,0.7);
+    padding: 15px 20px;
+    border-radius: 15px;
+    min-width: 60px;  /* reducir ancho mínimo */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+/* Números más grandes y legibles */
+.contador span {
+    font-size: 28px;
+    color: #3f5c3a;
+    display: block;
+}
+
+/* CRONOGRAMA */
+.item {
+    margin: 20px 0;
+}
+
+.item span {
+    display: block;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+/* EVENTOS */
+.evento {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.evento h3 {
+    color: #3f5c3a;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.hora {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.direccion {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* BOTÓN UBICACIÓN */
+.btn-ubicacion {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: #3f5c3a;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-ubicacion:hover {
+    background: #2e4230;
+    transform: translateY(-2px);
+}
+/* COLORES */
+
+.colors {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+    grid-auto-rows: 60px;
+}
+
+.colors div {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.colors div:hover {
+    transform: scale(1.05);
+}
+
+.colors span {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.colors p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* BOTÓN CONFIRMAR */
+/* CASILLERO DE NOMBRE Y BOTÓN WHATSAPP */
+.form-texto {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 15px;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    animation: aparecer 0.3s ease;
+}
+
+.input-group input {
+    flex: 1;
+    height: 45px;
+    padding: 0 15px;
+}
+
+.eliminar {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.05);
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.eliminar:hover {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+    transform: scale(1.1);
+}
+.btn-secundario {
+    margin-top: 10px;
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: 1px solid #3f5c3a;
+    background: transparent;
+    color: #3f5c3a;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-secundario:hover {
+    background: #3f5c3a;
+    color: white;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.confirmar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    border-radius: 20px;
+    text-align: center;
+    gap: 15px;
+}
+
+.confirmar-container label {
+    font-size: 20px;
+    font-weight: 500;
+    color: #3f5c3a;
+    margin-bottom: 8px;
+}
+
+.confirmar-container input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 15px;
+    border: 1px solid #3f5c3a;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.confirmar-container input[type="text"]:focus {
+    border-color: #3f5c3a;
+    box-shadow: 0 0 8px rgba(143,176,86,0.4);
+}
+
+#btnConfirmar {
+    padding: 12px 25px;
+    background: #3f5c3a;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 250px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btnConfirmar:hover {
+    background: #3f5c3a;
+    transform: translateY(-2px);
+}
+
+#pantalla-final {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: #f5f1ea;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    z-index: 999;
+
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    transition: opacity 0.3s ease;
+}
+
+#pantalla-final.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#pantalla-final h2 {
+    font-family: 'Great Vibes', cursive;
+    font-style: 2.5rem;
+    color: #3f5c3a;
+}
+
+#pantalla-final button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    background: #3f5c3a;
+    color: white;
+    cursor: pointer;
+}
+
+/* BOTÓN DE MÚSICA REDONDO CON ANIMACIÓN */
+#music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #3f5c3a;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    opacity: 0; /* inicia oculto */
+    pointer-events: auto;
+    transition: opacity 0.5s ease, transform 0.2s;
+}
+
+#music-toggle.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#music-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Símbolos */
+.pause-symbol {
+    font-size: 32px;
+    writing-mode: vertical-rl;
+    line-height: 1;
+}
+
+.play-triangle {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Mostrar solo según estado */
+#music-toggle.paused .pause-symbol {
+    display: inline; 
+}
+#music-toggle.paused .play-triangle { 
+    display: none; 
+}
+
+#music-toggle.playing .pause-symbol { 
+    display: none; 
+}
+#music-toggle.playing .play-triangle {             display: inline;
+}
+/* ANIMACIONES */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .hero {
+        margin: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .names {
+    font-size: 2.2rem;
+    }
+
+    section {
+    margin: 20px 15px;
+    padding: 40px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .colors {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    .colors div {
+    width: 100%;
+    height: 60px;
+    border-radius: 12px; 
+    }
+}
+@media (max-width: 600px) {
+    .welcome-card {
+        padding: 20px auto;
+    }
+
+    .welcome-card h2 {
+        font-size: 2rem;
+    }
+
+    .welcome-card p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+@media (max-width: 600px) {
+    #contador {
+        min-height: auto;
+        padding: 20px auto;
+    }
+
+    .contador {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .contador div {
+        min-width: 50px;
+        padding: 10px 12px;
+    }
+
+    .contador span {
+        font-size: 22px;
+    }
+
+    .contador p {
+        font-size: 11px;
+    }
+}
